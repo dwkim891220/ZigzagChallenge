@@ -1,4 +1,4 @@
-package kr.dwkim.zigzagchallenge
+package kr.dwkim.zigzagchallenge.model
 
 import com.google.gson.annotations.SerializedName
 

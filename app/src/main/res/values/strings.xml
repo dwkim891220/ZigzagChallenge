@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">ZigzagChallenge</string>
+    <string name="msg_empty_list">리스트를 가져오는데 실패했습니다.</string>
+
+    <string name="btn_filter">필터</string>
+    <string name="iv_shopItem">iv_shopItem</string>
 </resources>
