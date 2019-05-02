@@ -25,15 +25,16 @@ class ShopModel(shop: Shop) {
         try {
             val startIndex: Int
             val endIndex: Int
-            val firstDot = url.indexOf(".") + 1
-            val secondDot = url.indexOf(".", firstDot)
+            val dividerIndex = url.indexOf("://") + 3
+            val firstDot = url.indexOf(".")
+            val secondDot = url.indexOf(".", firstDot + 1)
 
-            if(secondDot < 0){
-                startIndex = url.indexOf("://")
-                endIndex = firstDot
-            }else{
-                startIndex = firstDot
+            if(url.substring(dividerIndex, firstDot) == "www"){
+                startIndex = firstDot + 1
                 endIndex = secondDot
+            }else{
+                startIndex = dividerIndex
+                endIndex = firstDot
             }
 
             String.format("https://cf.shop.s.zigzag.kr/images/%s.jpg",url.substring(startIndex, endIndex))
