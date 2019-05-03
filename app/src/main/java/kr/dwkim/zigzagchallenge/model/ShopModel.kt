@@ -1,12 +1,12 @@
 package kr.dwkim.zigzagchallenge.model
 
-class ShopModel(shop: Shop) {
+class ShopModel(shop: Shop, private val pStyleList: List<DataPresenter.StyleModel>?) {
     val score: Int
     val name: String
     val imageUrl: String
     val ageArray: IntArray
     val ageStringList: Array<String>
-    val styleList: Array<String>
+    val styleList: List<DataPresenter.StyleModel>
     private val style: String
     private val homePageUrl: String
 
@@ -17,7 +17,7 @@ class ShopModel(shop: Shop) {
         this.imageUrl = getImageUrl(shop.url)
         this.ageArray = shop.ageArray
         this.style = shop.style
-        this.styleList = getStyleArray(shop.style)
+        this.styleList = parseStyleList(shop.style)
         this.ageStringList = getAgeStringArray(shop.ageArray)
     }
 
@@ -43,28 +43,51 @@ class ShopModel(shop: Shop) {
             ""
         }
 
-    private fun getStyleArray(style: String) : Array<String> =
-        style.split(",").toTypedArray()
+    private fun parseStyleList(style: String) : List<DataPresenter.StyleModel> {
+        val tempList = arrayListOf<DataPresenter.StyleModel>()
+
+        style.split(",").forEach { styleText ->
+            pStyleList?.forEach { model ->
+                if(model.style == styleText){
+                    tempList.add(model)
+                }
+            }
+        }
+
+        return tempList
+    }
+
 
     private fun getAgeStringArray(ageArray: IntArray): Array<String>{
         val ageStringList = arrayListOf<String>()
 
-        if(ageArray[0] == 1){
-            ageStringList.add("10대")
-        }
-
-        if(ageArray[1] == 1
-            || ageArray[2] == 1
-            || ageArray[3] == 1
+        if(ageArray[0] == 1
+            && ageArray[1] == 1
+            && ageArray[2] == 1
+            && ageArray[3] == 1
+            && ageArray[4] == 1
+            && ageArray[5] == 1
+            && ageArray[6] == 1
         ){
-            ageStringList.add("20대")
-        }
+            ageStringList.add("모두")
+        }else {
+            if (ageArray[0] == 1) {
+                ageStringList.add("10대")
+            }
 
-        if(ageArray[4] == 1
-            || ageArray[5] == 1
-            || ageArray[6] == 1
-        ){
-            ageStringList.add("30대")
+            if (ageArray[1] == 1
+                || ageArray[2] == 1
+                || ageArray[3] == 1
+            ) {
+                ageStringList.add("20대")
+            }
+
+            if (ageArray[4] == 1
+                || ageArray[5] == 1
+                || ageArray[6] == 1
+            ) {
+                ageStringList.add("30대")
+            }
         }
 
         return ageStringList.toTypedArray()

@@ -2,4 +2,5 @@
 <resources>
     <dimen name="defaultSpacing">8dp</dimen>
     <dimen name="defaultHalfSpacing">4dp</dimen>
+    <dimen name="default_radius">4dp</dimen>
 </resources>

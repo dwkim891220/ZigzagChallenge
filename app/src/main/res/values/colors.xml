@@ -4,5 +4,9 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
 
+    <color name="black_light10">#777777</color>
     <color name="black_light30">#bdbdbd</color>
+
+    <color name="coral_base">#ff5a5f</color>
+    <color name="indigo_base">#7b98e9</color>
 </resources>
