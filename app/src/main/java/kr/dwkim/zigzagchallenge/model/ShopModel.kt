@@ -6,7 +6,9 @@ class ShopModel(shop: Shop, private val pStyleList: List<DataPresenter.StyleMode
     val imageUrl: String
     val ageArray: IntArray
     val ageStringList: Array<String>
+    var ageEqualsCount = 0
     val styleList: List<DataPresenter.StyleModel>
+    var styleEqualsCount = 0
     private val style: String
     private val homePageUrl: String
 
@@ -91,5 +93,33 @@ class ShopModel(shop: Shop, private val pStyleList: List<DataPresenter.StyleMode
         }
 
         return ageStringList.toTypedArray()
+    }
+
+    fun setStyleEqualsCount(filterList: List<String>){
+        styleEqualsCount = 0
+
+        if(filterList.isEmpty()){
+            styleEqualsCount = 0
+        }else {
+            filterList.forEach { item ->
+                if(style.contains(item)){
+                    styleEqualsCount++
+                }
+            }
+        }
+    }
+
+    fun setAgeEqualsCount(ageList: List<Int>){
+//        ageEqualsCount = 0
+//
+//        if(ageList.isEmpty()){
+//            ageEqualsCount = 0
+//        }else {
+//            ageList.forEachIndexed { index, item ->
+//                if(ageArray[index] == 1){
+//                    ageEqualsCount++
+//                }
+//            }
+//        }
     }
 }

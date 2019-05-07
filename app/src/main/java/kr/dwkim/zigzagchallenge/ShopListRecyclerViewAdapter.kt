@@ -14,7 +14,7 @@ import kr.dwkim.zigzagchallenge.model.DataPresenter
 import kr.dwkim.zigzagchallenge.model.ShopModel
 import kr.dwkim.zigzagchallenge.util.AndroidExtensionsViewHolder
 
-class ShopRecyclerViewAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class ShopListRecyclerViewAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     var itemList: List<ShopModel> = listOf()
 
     fun addAll(list: List<ShopModel>){

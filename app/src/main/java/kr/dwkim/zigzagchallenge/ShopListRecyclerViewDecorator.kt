@@ -5,7 +5,7 @@ import android.graphics.Canvas
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 
-class ShopRecyclerViewDecorator(context: Context) : RecyclerView.ItemDecoration() {
+class ShopListRecyclerViewDecorator(context: Context) : RecyclerView.ItemDecoration() {
     private val divider = ContextCompat.getDrawable(context, R.drawable.divider)
 
     override fun onDrawOver(c: Canvas, parent: RecyclerView, state: RecyclerView.State) {

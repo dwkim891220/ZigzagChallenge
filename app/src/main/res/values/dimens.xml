@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="defaultSpacing">8dp</dimen>
     <dimen name="defaultHalfSpacing">4dp</dimen>
+    <dimen name="defaultSpacing">8dp</dimen>
+
     <dimen name="default_radius">4dp</dimen>
 </resources>
