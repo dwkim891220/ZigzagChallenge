@@ -110,16 +110,16 @@ class ShopModel(shop: Shop, private val pStyleList: List<DataPresenter.StyleMode
     }
 
     fun setAgeEqualsCount(ageList: List<Int>){
-//        ageEqualsCount = 0
-//
-//        if(ageList.isEmpty()){
-//            ageEqualsCount = 0
-//        }else {
-//            ageList.forEachIndexed { index, item ->
-//                if(ageArray[index] == 1){
-//                    ageEqualsCount++
-//                }
-//            }
-//        }
+        ageEqualsCount = 0
+
+        if(ageList.isEmpty()){
+            ageEqualsCount = 0
+        }else {
+            ageList.forEachIndexed { index, item ->
+                if(ageArray[index] == item){
+                    ageEqualsCount++
+                }
+            }
+        }
     }
 }

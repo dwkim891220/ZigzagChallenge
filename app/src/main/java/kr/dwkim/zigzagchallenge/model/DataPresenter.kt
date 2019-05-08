@@ -70,15 +70,15 @@ class DataPresenter {
                 return shopModelList
             }else{
                 if(ageSelectedCount > 0 && styleSelectedCount == 0){
-//                    shopModelList.forEach { shopModel ->
-//                        shopModel.setAgeEqualsCount(
-//                            filterValues.ageList
-//                                .map{ item ->
-//                                    if (item.isSelected) 0
-//                                    else 1
-//                                }
-//                        )
-//                    }
+                    shopModelList.forEach { shopModel ->
+                        shopModel.setAgeEqualsCount(
+                            filterValues.ageList
+                                .map{ item ->
+                                    if (item.isSelected) 1
+                                    else 0
+                                }
+                        )
+                    }
 
                     return shopModelList.filter { item ->
                         item.ageEqualsCount > 0
@@ -88,7 +88,7 @@ class DataPresenter {
                         }.thenBy { item ->
                             item.score
                         }
-                    )
+                    ).reversed()
                 }else if(ageSelectedCount == 0 && styleSelectedCount > 0){
                     shopModelList.forEach { shopModel ->
                         shopModel.setStyleEqualsCount(
@@ -108,7 +108,33 @@ class DataPresenter {
                         }
                     ).reversed()
                 }else{
-                    return shopModelList
+                    shopModelList.forEach { shopModel ->
+                        shopModel.setAgeEqualsCount(
+                            filterValues.ageList
+                                .map{ item ->
+                                    if (item.isSelected) 1
+                                    else 0
+                                }
+                        )
+
+                        shopModel.setStyleEqualsCount(
+                            filterValues.styleList
+                                .filter { item -> item.isSelected }
+                                .map { item -> item.displayText }
+                        )
+                    }
+
+                    return shopModelList.filter { item ->
+                        item.ageEqualsCount > 0 && item.styleEqualsCount > 0
+                    }.sortedWith(
+                        compareBy<ShopModel> { item ->
+                            item.ageEqualsCount
+                        }.thenBy{ item ->
+                            item.styleEqualsCount
+                        }.thenBy { item ->
+                            item.score
+                        }
+                    ).reversed()
                 }
             }
         } ?: emptyList()
